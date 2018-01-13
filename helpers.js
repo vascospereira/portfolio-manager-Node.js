@@ -41,7 +41,7 @@ const Register = {
 
 const History = {
     name: 'history',
-    text: 'SELECT * FROM transactions WHERE user_id = $1',
+    text: 'SELECT symbol, shares, CAST(price AS money), transacted FROM transactions WHERE user_id = $1',
 };
 
 const InsertTransaction = {
