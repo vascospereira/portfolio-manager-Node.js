@@ -1,0 +1,14 @@
+extends layout
+
+block title
+    title Sell
+
+block content
+    form.forms(action="#", method="post")
+        fieldset
+            .form-group
+                input.form-control(autocomplete="off", autofocus="", name="symbol", placeholder="Symbol")
+            .form-group
+                input.form-control(autocomplete="off", name="shares", placeholder="Shares")
+            .form-group
+                button.btn.btn-default Sell

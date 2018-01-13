@@ -1,0 +1,31 @@
+extends layout
+
+block title
+    title Index
+
+block content
+    table.table.table-striped
+        thead
+            tr
+                th Symbol
+                th Name
+                th Shares
+                th Price
+                th TOTAL
+        tbody
+            for stock in stocks
+                tr
+                    td #{ stock.symbol }
+                    td #{ stock.name }
+                    td #{ stock.shares }
+                    td #{ stock.price }
+                    td #{ stock.value }
+            tr
+                td(colspan='4') CASH
+                td #{ cash }
+        tfoot
+            tr
+                td(colspan='4')
+                td
+                    strong #{ total }
+

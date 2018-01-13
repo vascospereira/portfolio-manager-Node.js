@@ -1,0 +1,16 @@
+extends layout
+
+block title
+    title Register
+
+block content
+    form.forms(data-toggle="validator", action="/register", method="post")
+        fieldset
+            .form-group
+                input#inputName.form-control(type="text", placeholder="Username", name="username")
+            .form-group
+                input#inputPassword.form-control(type="password", placeholder="Password", name="password")
+            .form-group
+                input#inputPasswordConfirm.form-control(type="password", placeholder="Confirm", name="confirm")
+            .form-group
+                button.btn.btn-primary(type="submit") Register

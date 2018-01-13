@@ -1,0 +1,14 @@
+extends layout
+
+block title
+    title Log In
+
+block content
+    form.forms(data-toggle="validator", action="/login", method="post")
+        fieldset
+            .form-group
+                input#inputName.form-control(placeholder="Username", name="username")
+            .form-group
+                input#inputPassword.form-control(type="password", placeholder="Password", name="password")
+            .form-group
+                button.btn.btn-primary Log in

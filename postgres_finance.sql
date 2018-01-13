@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL UNIQUE,
+    username TEXT UNIQUE NOT NULL,
+    hash TEXT NOT NULL,
+    cash NUMERIC NOT NULL DEFAULT 10000.0000 );
+CREATE UNIQUE INDEX IF NOT EXISTS username ON users (username);
+
+CREATE TABLE IF NOT EXISTS transactions (
+    id SERIAL UNIQUE,
+    user_id INTEGER NOT NULL,
+    symbol TEXT NOT NULL,
+    shares INTEGER NOT NULL,
+    price NUMERIC NOT NULL,
+    transacted TIMESTAMP WITHOUT TIME zone NOT NULL DEFAULT timezone('UTC', now()),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE RESTRICT
+);
+CREATE INDEX IF NOT EXISTS user_id ON transactions (user_id);

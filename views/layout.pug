@@ -1,0 +1,56 @@
+doctype html
+html(lang="en")
+    head
+        // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+        meta(charset="utf-8")
+        meta(content="initial-scale=1, width=device-width", name="viewport")
+        // documentation at http://getbootstrap.com/, alternative themes at https://www.bootstrapcdn.com/bootswatch/
+        link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet")
+        link(href="/stylesheets/style.css", rel="stylesheet")
+        block title
+            title Finance
+    body
+        .container
+            nav.navbar.navbar-default
+                .container-fluid
+                    .navbar-header
+                        button.navbar-toggle.collapsed(aria-expanded="false", data-target="#navbar", data-toggle="collapse", type="button")
+                            span.sr-only Toggle navigation
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        a.navbar-brand(href="/")
+                            span.red Finance
+
+                    #navbar.collapse.navbar-collapse
+                        if session.user
+                            ul.nav.navbar-nav
+                                li
+                                    a(href="/buy") Buy
+                                li
+                                    a(href="/sell") Sell
+                                li
+                                    a(href="/history") History
+                                form.navbar-form.navbar-left(action='/quote', method='post')
+                                    .form-group
+                                        input.form-control(autocomplete='off', name='symbol', placeholder='Symbol')
+                                    button.btn.btn-default Quote
+                            ul.nav.navbar-nav.navbar-right
+                                li
+                                    a(href="/logout") Log Out
+                        else
+                            ul.nav.navbar-nav.navbar-right
+                                li
+                                    a(href="/register") Register
+                                li
+                                    a(href="/login") Log In
+            != messages('message', locals)
+            block content
+            footer.footer
+                .info
+                    p.text-muted © 2017 · All rights reserved
+        script(src="/javascripts/scripts.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
+        script(src="https://unpkg.com/axios/dist/axios.min.js")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
+        //script(src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js")

@@ -1,0 +1,19 @@
+extends layout
+
+block title
+    title History
+block content
+    table.table.table-striped
+        thead
+            tr
+                th Symbol
+                th Shares
+                th Price
+                th.text-right Transacted
+        tbody
+            for transaction in transactions
+                tr
+                    td #{transaction.symbol}
+                    td #{transaction.shares}
+                    td #{transaction.price}
+                    td.text-right #{transaction.transacted}

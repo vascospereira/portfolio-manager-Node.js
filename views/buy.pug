@@ -1,0 +1,14 @@
+extends layout
+
+block title
+    title Buy
+
+block content
+    form.forms(action="/buy", method="post")
+        fieldset
+            .form-group
+                input.form-control(autocomplete="off", autofocus="", name="symbol", placeholder="Symbol", type="text")
+            .form-group
+                input.form-control(autocomplete="off", name="shares", placeholder="Shares", type="text")
+            .form-group
+                button.btn.btn-default(type="submit") Buy
